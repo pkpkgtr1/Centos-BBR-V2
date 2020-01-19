@@ -27,3 +27,7 @@ echo "net.ipv4.tcp_congestion_control=bbr2" >> /etc/sysctl.conf
 sed -i '/net.ipv4.tcp_ecn/d' /etc/sysctl.conf  
 echo "net.ipv4.tcp_ecn=1" >> /etc/sysctl.conf # 启用ECN（不想启用就不要执行这一个）   
 reboot
+
+#检测bbr是否启动
+sysctl net.ipv4.tcp_available_congestion_control
+lsmod | grep bbr
