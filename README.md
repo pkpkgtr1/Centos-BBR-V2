@@ -17,7 +17,6 @@ reboot
 --------------------------------------------------------------------------------------------
 # 方法二（如果方法一无法成功安装内核请用此方法）
 yum -y install "https://wget.es/Kernel/Centos/kernel-5.4.0_rc6-1.x86_64.rpm"  # 安装内核  
-awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg     # 查看Grub2菜单  
 grub2-set-default 0  # 选择默认引导项  
 # 启用BBR2
 sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf  
@@ -30,4 +29,5 @@ reboot
 
 # 检测bbr是否启动
 sysctl net.ipv4.tcp_available_congestion_control  
-lsmod | grep bbr
+lsmod | grep bbr  
+awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg     # 查看Grub2菜单  
