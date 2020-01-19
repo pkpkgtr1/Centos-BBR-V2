@@ -25,5 +25,5 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf  
 echo "net.ipv4.tcp_congestion_control=bbr2" >> /etc/sysctl.conf  
 sed -i '/net.ipv4.tcp_ecn/d' /etc/sysctl.conf  
-echo "net.ipv4.tcp_ecn=1" >> /etc/sysctl.conf # 启用ECN（不想启用就不要执行这一个） 
+echo "net.ipv4.tcp_ecn=1" >> /etc/sysctl.conf # 启用ECN（不想启用就不要执行这一个）   
 reboot
