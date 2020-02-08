@@ -4,9 +4,13 @@ wget https://github.com/pkpkgtr1/Centos-BBR-V2/releases/download/v1.0/bbr_kernel
 yum -y install unzip && unzip bbr_kernel.zip  
 yum -y localinstall *  
 grub2-set-default 0  
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf  
+输入以下命令开启 BBR v2  
+echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf  
 echo "net.ipv4.tcp_congestion_control = bbr2" >> /etc/sysctl.conf  
-echo "net.ipv4.tcp_ecn = 1" >> /etc/sysctl.conf   # 开启ecn (可选)  
+sysctl -p  
+输入以下命令开启 ECN  
+echo "net.ipv4.tcp_ecn = 1" >> /etc/sysctl.conf  
+echo "net.ipv4.tcp_ecn_fallback = 1" >> /etc/sysctl.conf  
 sysctl -p  
 rm kernel-5.2.0_rc3+-1.x86_64.rpm  
 rm kernel-headers-5.2.0_rc3+-1.x86_64.rpm  
